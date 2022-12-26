@@ -9,8 +9,16 @@ class AppBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onpress,
-      child: Text(btnName),
-      
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xFF091F46),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Text(
+          btnName,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
     );
   }
 }

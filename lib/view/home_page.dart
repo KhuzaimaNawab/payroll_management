@@ -21,22 +21,32 @@ class HomePage extends StatelessWidget {
       height: 20,
     );
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF091F46),
+        title: const Text('Customer Self Server'),
+        leading: Image.asset(
+          'assets/logo.png',
+          fit: BoxFit.contain,
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
               'Payroll Management',
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             sizedBoxH,
-            Container(
-              height: MediaQuery.of(context).size.height / 2,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade300),
+                ),
+                child: const EmployeeList(),
               ),
-              child: const EmployeeList(),
             ),
             sizedBoxH,
             Row(

@@ -13,8 +13,16 @@ class AddEmployeeBox extends StatefulWidget {
 }
 
 class _AddEmployeeBox extends State<AddEmployeeBox> {
-  final TextEditingController employeeName = TextEditingController();
-  final TextEditingController salary = TextEditingController();
+  final TextEditingController _name = TextEditingController();
+  final TextEditingController _designation = TextEditingController();
+  final TextEditingController _department = TextEditingController();
+
+  final TextEditingController _basicPay = TextEditingController();
+  final TextEditingController _incentivePay = TextEditingController();
+  final TextEditingController _houseRentAllowance = TextEditingController();
+  final TextEditingController _mealAllowance = TextEditingController();
+  final TextEditingController _providentFund = TextEditingController();
+  final TextEditingController _loan = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +32,47 @@ class _AddEmployeeBox extends State<AddEmployeeBox> {
       content: Column(children: [
         AlertBoxTextField(
           label: 'Employee Name',
-          textEditingController: employeeName,
+          textEditingController: _name,
           isDigit: false,
         ),
         AlertBoxTextField(
-          label: 'Add Salary',
-          textEditingController: salary,
+          label: 'Add Designation',
+          textEditingController: _designation,
+          isDigit: false,
+        ),
+        AlertBoxTextField(
+          label: 'Add Department',
+          textEditingController: _department,
+          isDigit: false,
+        ),
+        AlertBoxTextField(
+          label: 'Add Basic Pay',
+          textEditingController: _basicPay,
+          isDigit: true,
+        ),
+        AlertBoxTextField(
+          label: 'Add Incentive Pay',
+          textEditingController: _incentivePay,
+          isDigit: true,
+        ),
+        AlertBoxTextField(
+          label: 'Add House Rent Allowance',
+          textEditingController: _houseRentAllowance,
+          isDigit: true,
+        ),
+        AlertBoxTextField(
+          label: 'Add Meal Allowance',
+          textEditingController: _mealAllowance,
+          isDigit: true,
+        ),
+        AlertBoxTextField(
+          label: 'Add Provident Fund',
+          textEditingController: _providentFund,
+          isDigit: true,
+        ),
+        AlertBoxTextField(
+          label: 'Add loan',
+          textEditingController: _loan,
           isDigit: true,
         ),
         const SizedBox(
@@ -37,17 +80,28 @@ class _AddEmployeeBox extends State<AddEmployeeBox> {
         ),
         ElevatedButton(
           onPressed: () {
-            print(employeeName.text);
-            print(salary.text);
-            provider.setName(employeeName);
-            provider.setSalary(
-              salary,
-            );
+            provider.setName(_name);
+            provider.setBasicPay(_basicPay);
+            provider.setDepartment(_department);
+            provider.setDesignation(_designation);
+            provider.setHouseRentAllowance(_houseRentAllowance);
+            provider.setIncentivePay(_incentivePay);
+            provider.setLoan(_loan);
+            provider.setMealAllowance(_mealAllowance);
+            provider.setName(_name);
+            provider.setProvidentFund(_providentFund);
             provider.addEmployeeInfo(
               Employee(
                 id: 1,
-                name: employeeName.text,
-                salary: double.parse(salary.text),
+                name: _name.text,
+                designation: _designation.text,
+                department: _department.text,
+                basicPay: double.parse(_basicPay.text),
+                incentivePay: double.parse(_incentivePay.text),
+                houseRentAllowance: double.parse(_houseRentAllowance.text),
+                mealAllowance: double.parse(_mealAllowance.text),
+                providentFund: double.parse(_providentFund.text),
+                loan: double.parse(_loan.text), 
               ),
             );
             Navigator.pop(context);
